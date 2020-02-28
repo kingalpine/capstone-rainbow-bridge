@@ -1,0 +1,22 @@
+<%= form_with(model: frosting_flavor, local: true) do |form| %>
+  <% if frosting_flavor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(frosting_flavor.errors.count, "error") %> prohibited this frosting_flavor from being saved:</h2>
+
+      <ul>
+        <% frosting_flavor.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Frosting_Name %>
+    <%= form.text_field :Frosting_Name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+class FrostingFlavor < ApplicationRecord
+end

@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order description</th>
+      <th>Order type</th>
+      <th>Order status</th>
+      <th>Customer</th>
+      <th>Rental order</th>
+      <th>Venue street address</th>
+      <th>Venue city</th>
+      <th>Venue state</th>
+      <th>Venue zip</th>
+      <th>Order cost</th>
+      <th>Order delivery</th>
+      <th>Order due date</th>
+      <th>Order start date</th>
+      <th>Order date finish</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.Order_Description %></td>
+        <td><%= order.Order_Type_id %></td>
+        <td><%= order.Order_Status_id %></td>
+        <td><%= order.Customer_id %></td>
+        <td><%= order.Rental_Order_id %></td>
+        <td><%= order.Venue_Street_Address %></td>
+        <td><%= order.Venue_City %></td>
+        <td><%= order.Venue_State %></td>
+        <td><%= order.Venue_Zip %></td>
+        <td><%= order.Order_Cost %></td>
+        <td><%= order.Order_Delivery %></td>
+        <td><%= order.Order_Due_Date %></td>
+        <td><%= order.Order_Start_Date %></td>
+        <td><%= order.Order_Date_Finish %></td>
+        <td><%= link_to 'Show', order %></td>
+        <td><%= link_to 'Edit', edit_order_path(order) %></td>
+        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Order', new_order_path %>

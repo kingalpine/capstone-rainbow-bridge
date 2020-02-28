@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Rental_Item_Name: MyString
+  Rental_Item_Description: MyText
+  Rental_Item_Cost: 1
+
+two:
+  Rental_Item_Name: MyString
+  Rental_Item_Description: MyText
+  Rental_Item_Cost: 1

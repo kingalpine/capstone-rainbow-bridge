@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Frosting Flavors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Frosting name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @frosting_flavors.each do |frosting_flavor| %>
+      <tr>
+        <td><%= frosting_flavor.Frosting_Name %></td>
+        <td><%= link_to 'Show', frosting_flavor %></td>
+        <td><%= link_to 'Edit', edit_frosting_flavor_path(frosting_flavor) %></td>
+        <td><%= link_to 'Destroy', frosting_flavor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Frosting Flavor', new_frosting_flavor_path %>

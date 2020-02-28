@@ -1,0 +1,52 @@
+<%= form_with(model: tier, local: true) do |form| %>
+  <% if tier.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tier.errors.count, "error") %> prohibited this tier from being saved:</h2>
+
+      <ul>
+        <% tier.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Position %>
+    <%= form.number_field :Position %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Cake_Flavor_id %>
+    <%= form.text_field :Cake_Flavor_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Frosting_Flavor_id %>
+    <%= form.text_field :Frosting_Flavor_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Shape_id %>
+    <%= form.text_field :Shape_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Order_Line_id %>
+    <%= form.text_field :Order_Line_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Tier_Size %>
+    <%= form.text_field :Tier_Size %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Tier_Special_Notes %>
+    <%= form.text_area :Tier_Special_Notes %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

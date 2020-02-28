@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status name:</strong>
+  <%= @order_status.Status_Name %>
+</p>
+
+<%= link_to 'Edit', edit_order_status_path(@order_status) %> |
+<%= link_to 'Back', order_statuses_path %>

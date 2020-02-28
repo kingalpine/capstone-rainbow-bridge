@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Order_Description: MyText
+  Order_Type: one
+  Order_Status: one
+  Customer: one
+  Rental_Order: one
+  Venue_Street_Address: MyString
+  Venue_City: MyString
+  Venue_State: MyString
+  Venue_Zip: MyString
+  Order_Cost: 1
+  Order_Delivery: false
+  Order_Due_Date: 2020-02-27 20:05:20
+  Order_Start_Date: 2020-02-27 20:05:20
+  Order_Date_Finish: 2020-02-27 20:05:20
+
+two:
+  Order_Description: MyText
+  Order_Type: two
+  Order_Status: two
+  Customer: two
+  Rental_Order: two
+  Venue_Street_Address: MyString
+  Venue_City: MyString
+  Venue_State: MyString
+  Venue_Zip: MyString
+  Order_Cost: 1
+  Order_Delivery: false
+  Order_Due_Date: 2020-02-27 20:05:20
+  Order_Start_Date: 2020-02-27 20:05:20
+  Order_Date_Finish: 2020-02-27 20:05:20

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @rental_line.Order_id %>
+</p>
+
+<p>
+  <strong>Rental item:</strong>
+  <%= @rental_line.Rental_Item_id %>
+</p>
+
+<%= link_to 'Edit', edit_rental_line_path(@rental_line) %> |
+<%= link_to 'Back', rental_lines_path %>

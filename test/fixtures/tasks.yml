@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Order_Line: one
+  Task_Start_Date: 2020-02-27 20:32:41
+  Task_Due_Date: 2020-02-27 20:32:41
+  Task_Finish_Date: 2020-02-27 20:32:41
+  Task_Name: MyString
+  Task_Description: MyText
+  Task_Status: one
+
+two:
+  Order_Line: two
+  Task_Start_Date: 2020-02-27 20:32:41
+  Task_Due_Date: 2020-02-27 20:32:41
+  Task_Finish_Date: 2020-02-27 20:32:41
+  Task_Name: MyString
+  Task_Description: MyText
+  Task_Status: two

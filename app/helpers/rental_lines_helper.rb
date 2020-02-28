@@ -1,0 +1,2 @@
+module RentalLinesHelper
+end

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tiers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Position</th>
+      <th>Cake flavor</th>
+      <th>Frosting flavor</th>
+      <th>Shape</th>
+      <th>Order line</th>
+      <th>Tier size</th>
+      <th>Tier special notes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tiers.each do |tier| %>
+      <tr>
+        <td><%= tier.Position %></td>
+        <td><%= tier.Cake_Flavor_id %></td>
+        <td><%= tier.Frosting_Flavor_id %></td>
+        <td><%= tier.Shape_id %></td>
+        <td><%= tier.Order_Line_id %></td>
+        <td><%= tier.Tier_Size %></td>
+        <td><%= tier.Tier_Special_Notes %></td>
+        <td><%= link_to 'Show', tier %></td>
+        <td><%= link_to 'Edit', edit_tier_path(tier) %></td>
+        <td><%= link_to 'Destroy', tier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tier', new_tier_path %>

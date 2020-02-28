@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Position: 1
+  Cake_Flavor: one
+  Frosting_Flavor: one
+  Shape: one
+  Order_Line: one
+  Tier_Size: MyString
+  Tier_Special_Notes: MyText
+
+two:
+  Position: 1
+  Cake_Flavor: two
+  Frosting_Flavor: two
+  Shape: two
+  Order_Line: two
+  Tier_Size: MyString
+  Tier_Special_Notes: MyText

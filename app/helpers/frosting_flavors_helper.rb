@@ -1,0 +1,2 @@
+module FrostingFlavorsHelper
+end

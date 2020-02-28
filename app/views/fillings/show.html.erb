@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Filling name:</strong>
+  <%= @filling.Filling_Name %>
+</p>
+
+<p>
+  <strong>Filling description:</strong>
+  <%= @filling.Filling_Description %>
+</p>
+
+<%= link_to 'Edit', edit_filling_path(@filling) %> |
+<%= link_to 'Back', fillings_path %>

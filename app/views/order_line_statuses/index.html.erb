@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Order Line Statuses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order line status name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order_line_statuses.each do |order_line_status| %>
+      <tr>
+        <td><%= order_line_status.Order_Line_Status_Name %></td>
+        <td><%= link_to 'Show', order_line_status %></td>
+        <td><%= link_to 'Edit', edit_order_line_status_path(order_line_status) %></td>
+        <td><%= link_to 'Destroy', order_line_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Order Line Status', new_order_line_status_path %>

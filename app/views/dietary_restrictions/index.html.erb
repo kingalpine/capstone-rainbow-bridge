@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dietary Restrictions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dietary restriction name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dietary_restrictions.each do |dietary_restriction| %>
+      <tr>
+        <td><%= dietary_restriction.Dietary_Restriction_Name %></td>
+        <td><%= link_to 'Show', dietary_restriction %></td>
+        <td><%= link_to 'Edit', edit_dietary_restriction_path(dietary_restriction) %></td>
+        <td><%= link_to 'Destroy', dietary_restriction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dietary Restriction', new_dietary_restriction_path %>

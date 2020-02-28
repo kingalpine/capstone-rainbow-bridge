@@ -1,0 +1,2 @@
+module CakeFlavorsHelper
+end

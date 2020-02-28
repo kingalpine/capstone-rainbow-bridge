@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Order_Line: one
+  Dietary_Restriction: one
+
+two:
+  Order_Line: two
+  Dietary_Restriction: two

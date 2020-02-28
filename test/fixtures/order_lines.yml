@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Order: one
+  Product: one
+  Order_Line_Status: one
+  Order_Line_Start_Date: 2020-02-27 20:21:40
+  Order_Line_Finish_Date: 2020-02-27 20:21:40
+  Order_Line_Description: MyText
+  Special_Order_Notes: MyText
+
+two:
+  Order: two
+  Product: two
+  Order_Line_Status: two
+  Order_Line_Start_Date: 2020-02-27 20:21:40
+  Order_Line_Finish_Date: 2020-02-27 20:21:40
+  Order_Line_Description: MyText
+  Special_Order_Notes: MyText

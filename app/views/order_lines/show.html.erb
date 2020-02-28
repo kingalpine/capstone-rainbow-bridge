@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @order_line.Order_id %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @order_line.Product_id %>
+</p>
+
+<p>
+  <strong>Order line status:</strong>
+  <%= @order_line.Order_Line_Status_id %>
+</p>
+
+<p>
+  <strong>Order line start date:</strong>
+  <%= @order_line.Order_Line_Start_Date %>
+</p>
+
+<p>
+  <strong>Order line finish date:</strong>
+  <%= @order_line.Order_Line_Finish_Date %>
+</p>
+
+<p>
+  <strong>Order line description:</strong>
+  <%= @order_line.Order_Line_Description %>
+</p>
+
+<p>
+  <strong>Special order notes:</strong>
+  <%= @order_line.Special_Order_Notes %>
+</p>
+
+<%= link_to 'Edit', edit_order_line_path(@order_line) %> |
+<%= link_to 'Back', order_lines_path %>

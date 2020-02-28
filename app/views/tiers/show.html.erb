@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @tier.Position %>
+</p>
+
+<p>
+  <strong>Cake flavor:</strong>
+  <%= @tier.Cake_Flavor_id %>
+</p>
+
+<p>
+  <strong>Frosting flavor:</strong>
+  <%= @tier.Frosting_Flavor_id %>
+</p>
+
+<p>
+  <strong>Shape:</strong>
+  <%= @tier.Shape_id %>
+</p>
+
+<p>
+  <strong>Order line:</strong>
+  <%= @tier.Order_Line_id %>
+</p>
+
+<p>
+  <strong>Tier size:</strong>
+  <%= @tier.Tier_Size %>
+</p>
+
+<p>
+  <strong>Tier special notes:</strong>
+  <%= @tier.Tier_Special_Notes %>
+</p>
+
+<%= link_to 'Edit', edit_tier_path(@tier) %> |
+<%= link_to 'Back', tiers_path %>

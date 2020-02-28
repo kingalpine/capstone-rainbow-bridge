@@ -1,0 +1,87 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Order_Description %>
+    <%= form.text_area :Order_Description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Order_Type_id %>
+    <%= form.text_field :Order_Type_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Order_Status_id %>
+    <%= form.text_field :Order_Status_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Customer_id %>
+    <%= form.text_field :Customer_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Rental_Order_id %>
+    <%= form.text_field :Rental_Order_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Venue_Street_Address %>
+    <%= form.text_field :Venue_Street_Address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Venue_City %>
+    <%= form.text_field :Venue_City %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Venue_State %>
+    <%= form.text_field :Venue_State %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Venue_Zip %>
+    <%= form.text_field :Venue_Zip %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Order_Cost %>
+    <%= form.number_field :Order_Cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Order_Delivery %>
+    <%= form.check_box :Order_Delivery %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Order_Due_Date %>
+    <%= form.datetime_select :Order_Due_Date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Order_Start_Date %>
+    <%= form.datetime_select :Order_Start_Date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Order_Date_Finish %>
+    <%= form.datetime_select :Order_Date_Finish %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

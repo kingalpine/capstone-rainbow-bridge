@@ -1,0 +1,22 @@
+<%= form_with(model: order_type, local: true) do |form| %>
+  <% if order_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order_type.errors.count, "error") %> prohibited this order_type from being saved:</h2>
+
+      <ul>
+        <% order_type.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Order_Description %>
+    <%= form.text_area :Order_Description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

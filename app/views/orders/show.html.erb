@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order description:</strong>
+  <%= @order.Order_Description %>
+</p>
+
+<p>
+  <strong>Order type:</strong>
+  <%= @order.Order_Type_id %>
+</p>
+
+<p>
+  <strong>Order status:</strong>
+  <%= @order.Order_Status_id %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @order.Customer_id %>
+</p>
+
+<p>
+  <strong>Rental order:</strong>
+  <%= @order.Rental_Order_id %>
+</p>
+
+<p>
+  <strong>Venue street address:</strong>
+  <%= @order.Venue_Street_Address %>
+</p>
+
+<p>
+  <strong>Venue city:</strong>
+  <%= @order.Venue_City %>
+</p>
+
+<p>
+  <strong>Venue state:</strong>
+  <%= @order.Venue_State %>
+</p>
+
+<p>
+  <strong>Venue zip:</strong>
+  <%= @order.Venue_Zip %>
+</p>
+
+<p>
+  <strong>Order cost:</strong>
+  <%= @order.Order_Cost %>
+</p>
+
+<p>
+  <strong>Order delivery:</strong>
+  <%= @order.Order_Delivery %>
+</p>
+
+<p>
+  <strong>Order due date:</strong>
+  <%= @order.Order_Due_Date %>
+</p>
+
+<p>
+  <strong>Order start date:</strong>
+  <%= @order.Order_Start_Date %>
+</p>
+
+<p>
+  <strong>Order date finish:</strong>
+  <%= @order.Order_Date_Finish %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
