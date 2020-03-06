@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_02_28_045408) do
 
   create_table "cake_flavors", force: :cascade do |t|
-    t.string "Cake_Name"
+    t.string "Cake_Name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -41,29 +41,29 @@ ActiveRecord::Schema.define(version: 2020_02_28_045408) do
   end
 
   create_table "dietary_restrictions", force: :cascade do |t|
-    t.string "Dietary_Restriction_Name"
+    t.string "Dietary_Restriction_Name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "employee_statuses", force: :cascade do |t|
-    t.string "Employee_Status_Name"
+    t.string "Employee_Status_Name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "employee_types", force: :cascade do |t|
-    t.text "Employee_Type_Description"
+    t.text "Employee_Type_Description", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "employees", force: :cascade do |t|
     t.integer "Employee_Status_id", null: false
-    t.string "Employee_First_Name"
-    t.string "Employee_Last_Name"
-    t.string "Employee_Email"
-    t.string "Employee_Phone"
+    t.string "Employee_First_Name", null: false
+    t.string "Employee_Last_Name", null: false
+    t.string "Employee_Email", null: false
+    t.string "Employee_Phone", null: false
     t.integer "Employee_Type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -72,14 +72,14 @@ ActiveRecord::Schema.define(version: 2020_02_28_045408) do
   end
 
   create_table "fillings", force: :cascade do |t|
-    t.string "Filling_Name"
-    t.text "Filling_Description"
+    t.string "Filling_Name", null: false
+    t.text "Filling_Description", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "frosting_flavors", force: :cascade do |t|
-    t.string "Frosting_Name"
+    t.string "Frosting_Name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_045408) do
   end
 
   create_table "order_line_statuses", force: :cascade do |t|
-    t.string "Order_Line_Status_Name"
+    t.string "Order_Line_Status_Name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_045408) do
     t.integer "Order_id", null: false
     t.integer "Product_id", null: false
     t.integer "Order_Line_Status_id", null: false
-    t.datetime "Order_Line_Start_Date"
+    t.datetime "Order_Line_Start_Date", null: false
     t.datetime "Order_Line_Finish_Date"
     t.text "Order_Line_Description"
     t.text "Special_Order_Notes"
@@ -136,9 +136,9 @@ ActiveRecord::Schema.define(version: 2020_02_28_045408) do
     t.string "Venue_State"
     t.string "Venue_Zip"
     t.integer "Order_Cost"
-    t.boolean "Order_Delivery"
-    t.datetime "Order_Due_Date"
-    t.datetime "Order_Start_Date"
+    t.boolean "Order_Delivery", null: false
+    t.datetime "Order_Due_Date", null: false
+    t.datetime "Order_Start_Date", null: false
     t.datetime "Order_Date_Finish"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -148,14 +148,14 @@ ActiveRecord::Schema.define(version: 2020_02_28_045408) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "Product_Name"
-    t.text "Product_Description"
+    t.string "Product_Name", null: false
+    t.text "Product_Description", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "rental_items", force: :cascade do |t|
-    t.string "Rental_Item_Name"
+    t.string "Rental_Item_Name", null: false
     t.text "Rental_Item_Description"
     t.integer "Rental_Item_Cost"
     t.datetime "created_at", precision: 6, null: false
@@ -172,7 +172,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_045408) do
   end
 
   create_table "shapes", force: :cascade do |t|
-    t.string "Shape_Name"
+    t.string "Shape_Name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -187,7 +187,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_045408) do
   end
 
   create_table "task_statuses", force: :cascade do |t|
-    t.string "Task_Status_Name"
+    t.string "Task_Status_Name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -221,7 +221,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_045408) do
     t.integer "Frosting_Flavor_id", null: false
     t.integer "Shape_id", null: false
     t.integer "Order_Line_id", null: false
-    t.string "Tier_Size"
+    t.string "Tier_Size", null: false
     t.text "Tier_Special_Notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

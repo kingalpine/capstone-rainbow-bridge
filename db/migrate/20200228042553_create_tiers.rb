@@ -6,7 +6,7 @@ class CreateTiers < ActiveRecord::Migration[6.0]
       t.references :Frosting_Flavor, null: false, foreign_key: true
       t.references :Shape, null: false, foreign_key: true
       t.references :Order_Line, null: false, foreign_key: true
-      t.string :Tier_Size
+      t.string :Tier_Size, null: false
       t.text :Tier_Special_Notes
 
       t.timestamps

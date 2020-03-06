@@ -10,9 +10,9 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.string :Venue_State
       t.string :Venue_Zip
       t.integer :Order_Cost
-      t.boolean :Order_Delivery
-      t.timestamp :Order_Due_Date
-      t.timestamp :Order_Start_Date
+      t.boolean :Order_Delivery, null: false
+      t.timestamp :Order_Due_Date, null: false
+      t.timestamp :Order_Start_Date, null: false
       t.timestamp :Order_Date_Finish
 
       t.timestamps
