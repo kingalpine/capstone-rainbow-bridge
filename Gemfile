@@ -51,9 +51,16 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
 # Added by Tyler 1/31, admin dashboard for employee controls of database and reporting
 # Added by Daniel 2/27, added to dev     
 gem 'rails_admin'
+
+# Added by Tyler 3/7, Form creation with bootstrap
+gem 'simple_form'
+
+# Added by Tyler 3/7, Nested forms
+gem 'cocoon'
 
 group :test do
   # Adds support for Capybara system testing and selenium driver

@@ -61,6 +61,16 @@
     <%= form.text_field :Customer_Zip_Code %>
   </div>
 
+  <h3>Orders</h3>
+  <div id="orders">
+    <%= form.fields_for :orders do |order| %>
+      <%= render 'order_fields', :f => order %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'Add Order', form, :orders %>
+    </div>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

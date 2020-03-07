@@ -1,0 +1,5 @@
+test: &default
+    AWS_ACCESS_KEY: AKIAJBRTBJBUN27IMELQ
+    AWS_SECRECT_KEY: 9vlDEYBBUqO/AtMODqgwXT5d6H2RYXq9hnzShJpN
+development:
+    <<: *default

@@ -10,6 +10,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+
+      <nav class="nav">
+        <%= link_to "Dashboard", rails_admin.dashboard_path %>
+      </nav>
+      
+      <%= yield %>
+
+    </div>
   </body>
 </html>
