@@ -1,52 +1,42 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Customer status:</strong>
-  <%= @customer.Customer_Status_id %>
+  <strong>Customer Status:</strong>
+  <%= @customer.Customer_Status.Customer_Status_Name %>
 </p>
 
 <p>
-  <strong>Customer first name:</strong>
-  <%= @customer.Customer_First_Name %>
+  <strong>Customer Name:</strong>
+  <%= @customer.Customer_First_Name + ' ' + @customer.Customer_Last_Name %>
 </p>
 
 <p>
-  <strong>Customer last name:</strong>
-  <%= @customer.Customer_Last_Name %>
-</p>
-
-<p>
-  <strong>Customer email:</strong>
+  <strong>Customer Email:</strong>
   <%= @customer.Customer_Email %>
 </p>
 
 <p>
-  <strong>Customer phone:</strong>
+  <strong>Customer Phone:</strong>
   <%= @customer.Customer_Phone %>
 </p>
 
 <p>
-  <strong>Customer street address:</strong>
+  <strong>Customer Street Address:</strong>
   <%= @customer.Customer_Street_Address %>
 </p>
 
 <p>
-  <strong>String:</strong>
-  <%= @customer.string %>
-</p>
-
-<p>
-  <strong>Customer city:</strong>
+  <strong>Customer City:</strong>
   <%= @customer.Customer_City %>
 </p>
 
 <p>
-  <strong>Customer state:</strong>
+  <strong>Customer State:</strong>
   <%= @customer.Customer_State %>
 </p>
 
 <p>
-  <strong>Customer zip code:</strong>
+  <strong>Customer Zip Code:</strong>
   <%= @customer.Customer_Zip_Code %>
 </p>
 

@@ -18,22 +18,17 @@
 
   <div class="field">
     <%= form.label :Order_Type_id %>
-    <%= form.text_field :Order_Type_id %>
+    <%= form.collection_select :Order_Type_id, OrderType.all, :id, :Order_Description %>
   </div>
 
   <div class="field">
     <%= form.label :Order_Status_id %>
-    <%= form.text_field :Order_Status_id %>
+    <%= form.collection_select :Order_Status_id, OrderStatus.all, :id, :Order_Status_Name %>
   </div>
 
   <div class="field">
     <%= form.label :Customer_id %>
-    <%= form.text_field :Customer_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :Rental_Order_id %>
-    <%= form.text_field :Rental_Order_id %>
+    <%= form.collection_select :Customer_id, Customer.all, :id, :Customer_First_Name%>
   </div>
 
   <div class="field">

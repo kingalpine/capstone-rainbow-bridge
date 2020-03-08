@@ -7,22 +7,17 @@
 
 <p>
   <strong>Order type:</strong>
-  <%= @order.Order_Type_id %>
+  <%= @order.Order_Type.Order_Description %>
 </p>
 
 <p>
   <strong>Order status:</strong>
-  <%= @order.Order_Status_id %>
+  <%= @order.Order_Status.Order_Status_Name %>
 </p>
 
 <p>
   <strong>Customer:</strong>
-  <%= @order.Customer_id %>
-</p>
-
-<p>
-  <strong>Rental order:</strong>
-  <%= @order.Rental_Order_id %>
+  <%= @order.Customer.Customer_First_Name + ' ' + @order.Customer.Customer_Last_Name %>
 </p>
 
 <p>
