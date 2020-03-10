@@ -5,7 +5,7 @@ class Order < ApplicationRecord
   validates :Order_Cost, presence: true
   validates :Order_Due_Date, presence: true
   validates :Order_Start_Date, presence: true
-  has_many :order_lines
+  has_many :Order_lines
   has_many :rental_lines
   accepts_nested_attributes_for :order_lines, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :rental_lines, reject_if: :all_blank, allow_destroy: true

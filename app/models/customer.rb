@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
   belongs_to :Customer_Status
-  has_many :orders
+  has_many :Order
   validates :Customer_First_Name, presence:true
   validates :Customer_Last_Name, presence:true
   validates :Customer_Email, presence:true

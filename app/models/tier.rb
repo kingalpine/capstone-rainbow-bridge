@@ -5,4 +5,5 @@ class Tier < ApplicationRecord
   belongs_to :Order_Line
   validates :Position, presence: true
   validates :Tier_Size, presence: true
+  has_many :Tier_Filling
 end

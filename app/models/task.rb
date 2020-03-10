@@ -5,4 +5,5 @@ class Task < ApplicationRecord
   validates :Task_Due_Date, presence: true
   validates :Task_Finish_Date, presence: true
   validates :Task_Name, presence: true
+  has_many :Task_Assignment
 end
