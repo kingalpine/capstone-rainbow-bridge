@@ -237,7 +237,7 @@ ActiveRecord::Schema.define(version: 2020_03_21_031817) do
 
   create_table "tiers", force: :cascade do |t|
     t.integer "position", null: false
-    t.integer "tier_size", null: false
+    t.string "tier_size", null: false
     t.string "tier_special_notes"
     t.integer "cake_flavor_id", null: false
     t.integer "frosting_flavor_id", null: false

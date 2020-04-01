@@ -1,14 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-    <strong>Employee first name:</strong>
-    <%= @employee.employee_first_name %>
-</p>
+<h1><%= @employee.employee_first_name %> <%= @employee.employee_last_name %></h1>
 
-<p>
-    <strong>Employee last name:</strong>
-    <%= @employee.employee_last_name %>
-</p>
 
 <p>
     <strong>Employee email:</strong>
@@ -22,13 +15,13 @@
 
 <p>
     <strong>Employee status:</strong>
-    <%= @employee.employee_status_id %>
+    <%= @employee.employee_status.employee_status_name %>
 </p>
 
 <p>
     <strong>Employee type:</strong>
-    <%= @employee.employee_type_id %>
+    <%= @employee.employee_type.employee_type_description %>
 </p>
 
-<%= link_to 'Edit', rails_admin.edit_path(model_name: 'employee', id: @employee.id) %> |
-<%= link_to 'Back', :back %>
+<%= link_to 'Edit', edit_employee_path(@employee),Class:"btn btn-primary" %> 
+<%= link_to 'Back', :back,Class:"btn btn-primary" %>

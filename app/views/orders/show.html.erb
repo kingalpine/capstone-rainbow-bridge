@@ -1,95 +1,121 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Order Details</h1>
+
 <p>
-    <strong>Order description:</strong>
+    <strong>Order Description:</strong>
     <%= @order.order_description %>
 </p>
 
 <p>
-    <strong>Order cost:</strong>
+    <strong>Order Cost:</strong>
     <%= @order.order_cost %>
 </p>
 
 <p>
-    <strong>Order start date:</strong>
-    <%= @order.order_start_date %>
+    <strong>Order Start Date:</strong>
+    <%= @order.order_start_date.to_formatted_s(:long_ordinal) %>
 </p>
 
 <p>
-    <strong>Order due date:</strong>
-    <%= @order.order_due_date %>
+    <strong>Order Due Date:</strong>
+    <%= @order.order_due_date.to_formatted_s(:long_ordinal) %>
 </p>
 
 <p>
-    <strong>Order date finish:</strong>
-    <%= @order.order_date_finish %>
+    <strong>Order Date Finish:</strong>
+    <%= @order.order_date_finish.try(:to_formatted_s, :long_ordinal)%>
 </p>
 
 <p>
-    <strong>Order delivery:</strong>
+    <strong>Order Delivery:</strong>
     <%= @order.order_delivery %>
 </p>
 
 <p>
-    <strong>Delivery street address:</strong>
+    <strong>Delivery Street Address:</strong>
     <%= @order.delivery_street_address %>
 </p>
 
 <p>
-    <strong>Delivery city:</strong>
+    <strong>Delivery City:</strong>
     <%= @order.delivery_city %>
 </p>
 
 <p>
-    <strong>Delivery state:</strong>
+    <strong>Delivery State:</strong>
     <%= @order.delivery_state %>
 </p>
 
 <p>
-    <strong>Delivery zip code:</strong>
+    <strong>Delivery Zip Code:</strong>
     <%= @order.delivery_zip_code %>
 </p>
 
 <p>
     <strong>Customer:</strong>
-    <%= @order.customer_id %>
+    <%= @order.customer.customer_first_name %> <%= @order.customer.customer_last_name %>
 </p>
 
 <p>
-    <strong>Order type:</strong>
+    <strong>Order Type:</strong>
     <%= @order.order_type.order_description %>
 </p>
 
 <p>
-    <strong>Order status:</strong>
+    <strong>Order Status:</strong>
     <%= @order.order_status.order_status_name %>
 </p>
 
 <hr>
 
-<table>
+<table class="table table-hover">
     <tbody>
+    <thead class="thead-light">
         <tr>
-            <th>Order Line Description</th>
-            <th>Order Line Start Date</th>
-            <th>Order Line Finish Date</th>
-            <th>Special Order Notes</th>
-            <th>Product</th>
-            <th>Order Line Status</th>
+            <th scope="col">Order Line Description</th>
+            <th scope="col">Order Line Start Date</th>
+            <th scope="col">Order Line Finish Date</th>
+            <th scope="col">Special Order Notes</th>
+            <th scope="col">Product</th>
+            <th scope="col">Order Line Status</th>
+            <th colspan="3"></th>
         </tr>
-
+        </thead>
         <% @order.order_lines.each do |ol| %>
         <tr>
             <td><%= ol.order_line_description %></td>
-            <td><%= ol.order_line_start_date %></td>
-            <td><%= ol.order_line_finish_date %></td>
+            <td><%= ol.order_line_start_date.to_formatted_s(:long_ordinal) %></td>
+            <td><%= ol.order_line_finish_date.to_formatted_s(:long_ordinal) %></td>
             <td><%= ol.special_order_notes %></td>
             <td><%= ol.product.product_name %></td>
             <td><%= ol.order_line_status.order_line_status_name %></td>
+            <td><%= link_to 'Show Details', ol %></td>
         </tr>
         <% end %>
     </tbody>
 </table>
 
-<%= link_to 'Edit', rails_admin.edit_path(model_name: 'order', id: @order.id) %> |
-<%= link_to 'Back', :back %>
+<hr>
+
+<table class="table table-hover">
+    <tbody>
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Order ID</th>
+            <th scope="col">Rental Item ID</th>
+            <th colspan="3"></th>
+        </tr>
+        </thead>
+        <% @order.rental_lines.each do |rl| %>
+        <tr>
+            <td><%= rl.order_id %></td>
+            <td><%= rl.rental_item_id %></td>
+            <td><%= link_to 'Show Details', rl %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= link_to 'Edit', edit_order_path(@order), class: "btn btn-primary" %> 
+<%= link_to 'Back', :back,class: "btn btn-primary" %>

@@ -1,0 +1,11 @@
+<div class='nested-fields'>
+<form>
+<div class="form-row">
+    <div class="form-group col-md-5">
+      <label for="Name">Filling</label>
+      <%= f.collection_select(:filling_id, Filling.all, :id, :filling_name, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+</div>
+</form>
+<%= link_to_remove_association "Remove Tier Filling", f %>
+</div>

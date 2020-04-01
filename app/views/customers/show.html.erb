@@ -1,88 +1,93 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+    <p id="notice"><%= notice %></p>
 
-<p>
-    <strong>Customer first name:</strong>
-    <%= @customer.customer_first_name %>
-</p>
+    <h1><%= @customer.customer_first_name %> <%= @customer.customer_last_name %></h1>
 
-<p>
-    <strong>Customer last name:</strong>
-    <%= @customer.customer_last_name %>
-</p>
 
-<p>
-    <strong>Customer email:</strong>
-    <%= @customer.customer_email %>
-</p>
+    <p>
+        <strong>Email:</strong>
+        <%= @customer.customer_email %>
+    </p>
 
-<p>
-    <strong>Customer phone:</strong>
-    <%= @customer.customer_phone %>
-</p>
+    <p>
+        <strong>Phone:</strong>
+        <%= @customer.customer_phone %>
+    </p>
 
-<p>
-    <strong>Customer street address:</strong>
-    <%= @customer.customer_street_address %>
-</p>
+    <p>
+        <strong>Street Address:</strong>
+        <%= @customer.customer_street_address %>
+    </p>
 
-<p>
-    <strong>Customer city:</strong>
-    <%= @customer.customer_city %>
-</p>
+    <p>
+        <strong>City:</strong>
+        <%= @customer.customer_city %>
+    </p>
 
-<p>
-    <strong>Customer state:</strong>
-    <%= @customer.customer_state %>
-</p>
+    <p>
+        <strong>State:</strong>
+        <%= @customer.customer_state %>
+    </p>
 
-<p>
-    <strong>Customer zip code:</strong>
-    <%= @customer.customer_zip_code %>
-</p>
+    <p>
+        <strong>Zip Code:</strong>
+        <%= @customer.customer_zip_code %>
+    </p>
 
-<p>
-    <strong>Customer status:</strong>
-    <%= @customer.customer_status.customer_status_name %>
-</p>
+    <p>
+        <strong>Status:</strong>
+        <%= @customer.customer_status.customer_status_name %>
+    </p>
 
-<hr>
+    <hr>
 
-<table>
-    <tbody>
-        <tr>
-            <th>Order Description</th>
-            <th>Order Cost</th>
-            <th>Order Start Date</th>
-            <th>Order Due Date</th>
-            <th>Order Finish Date</th>
-            <th>Order Delivery</th>
-            <th>Delivery Street Address</th>
-            <th>Delivery City</th>
-            <th>Delivery State</th>
-            <th>Delivery Zip Code</th>
-            <th>Order type</th>
-            <th>Order status</th>
-        </tr>
-        <% @customer.orders.each do |order| %>
-        <tr>
-            <td><%= order.order_description %></td>
-            <td><%= order.order_cost %></td>
-            <td><%= order.order_start_date %></td>
-            <td><%= order.order_due_date %></td>
-            <td><%= order.order_date_finish %></td>
-            <td><%= order.order_delivery %></td>
-            <td><%= order.delivery_street_address %></td>
-            <td><%= order.delivery_city %></td>
-            <td><%= order.delivery_state %></td>
-            <td><%= order.delivery_zip_code %></td>
-            <td><%= order.order_type.order_description %></td>
-            <td><%= order.order_status.order_status_name %></td>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
+    <div class="container text-center">
+        <h2>"Customer's Orders"</h2>
+        <%= button_to "Add an Order", new_order_path, params: {customer_id: @customer}, method: :get, class: "text-center btn btn-primary" %>
+    </div>
 
-<hr>
+    <br>
 
-<%= link_to 'Edit', rails_admin.edit_path(model_name: 'customer', id: @customer.id) %> |
-<%= link_to 'Back', :back %>
+    <table class="table table-hover">
+        <tbody>
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Order Description</th>
+                <th scope="col">Order Cost</th>
+                <th scope="col">Order Start Date</th>
+                <th scope="col">Order Due Date</th>
+                <th scope="col">Order Finish Date</th>
+                <th scope="col">Order Delivery</th>
+                <th scope="col">Delivery Street Address</th>
+                <th scope="col">Delivery City</th>
+                <th scope="col">Delivery State</th>
+                <th scope="col">Delivery Zip Code</th>
+                <th scope="col">Order Type</th>
+                <th scope="col">Order Status</th>
+                <th colspan="3"></th>
+            </thead>    
+            </tr>
+            <% @customer.orders.each do |order| %>
+            <tr>
+                <td><%= order.order_description %></td>
+                <td><%= order.order_cost %></td>
+                <td><%= order.order_start_date.to_formatted_s(:long_ordinal) %></td>
+                <td><%= order.order_due_date.to_formatted_s(:long_ordinal) %></td>
+                <td><%= order.order_date_finish.try(:to_formatted_s, :long_ordinal) %></td>
+                <td><%= order.order_delivery %></td>
+                <td><%= order.delivery_street_address %>" "<%= order.delivery_city %></td>
+                <td><%= order.delivery_city %></td>
+                <td><%= order.delivery_state %></td>
+                <td><%= order.delivery_zip_code %></td>
+                <td><%= order.order_type.order_description %></td>
+                <td><%= order.order_status.order_status_name %></td>
+                <td><%= link_to 'Show Details', order %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+    <hr>
+    <%= link_to 'Edit', edit_customer_path(@customer), Class: "btn btn-primary"%>
+    <%= link_to 'Back', :back, Class: "btn btn-primary" %>
+</div>

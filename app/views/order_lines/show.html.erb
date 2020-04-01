@@ -1,22 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-    <strong>Order line description:</strong>
+    <strong>Order Line Description:</strong>
     <%= @order_line.order_line_description %>
 </p>
 
 <p>
-    <strong>Order line start date:</strong>
-    <%= @order_line.order_line_start_date %>
+    <strong>Order Line Start Date:</strong>
+    <%= @order_line.order_line_start_date.to_formatted_s(:long_ordinal) %>
 </p>
 
 <p>
-    <strong>Order line finish date:</strong>
-    <%= @order_line.order_line_finish_date %>
+    <strong>Order Line Finish Date:</strong>
+    <%= @order_line.order_line_finish_date.to_formatted_s(:long_ordinal) %>
 </p>
 
 <p>
-    <strong>Special order notes:</strong>
+    <strong>Special Order Notes:</strong>
     <%= @order_line.special_order_notes %>
 </p>
 
@@ -26,27 +26,51 @@
 </p>
 
 <p>
-    <strong>Order line status:</strong>
+    <strong>Order Line Status:</strong>
     <%= @order_line.order_line_status.order_line_status_name %>
 </p>
 
 <p>
-    <strong>Order line id:</strong>
+    <strong>Order Line ID:</strong>
     <%= @order_line.order_id %>
 </p>
 
 <hr>
 
-<table>
+<table  class="table table-hover">
     <tbody>
+    <thead class="thead-light">
         <tr>
-            <th>Tier Position</th>
-            <th>Tier Size</th>
-            <th>Tier Special Notes</th>
-            <th>Cake Flavor</th>
-            <th>Frosting Flavor</th>
-            <th>Shape</th>
+            <th scope="col">Order Line ID</th>
+            <th scope="col">Dietary Restriction</th>
+            <th col span="3">
         </tr>
+        </thead>
+        <% @order_line.order_line_restrictions.each do |olr| %>
+        <tr>
+            <td><%= olr.order_line_id %></td>
+            <td><%= olr.dietary_restriction.dietary_restriction_name %></td>
+            <td><%= link_to 'Show Details', olr %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<hr>
+
+<table class="table table-hover">
+    <tbody>
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Tier Position</th>
+            <th scope="col">Tier Size</th>
+            <th scope="col">Tier Special Notes</th>
+            <th scope="col">Cake Flavor</th>
+            <th scope="col">Frosting Flavor</th>
+            <th scope="col">Shape</th>
+            <th col span="3">
+        </tr>
+        </thead>
         <% @order_line.tiers.each do |ot| %>
         <tr>
             <td><%= ot.position %></td>
@@ -55,6 +79,7 @@
             <td><%= ot.cake_flavor.flavor_name %></td>
             <td><%= ot.frosting_flavor.frosting_name %></td>
             <td><%= ot.shape.shape_name %></td>
+            <td><%= link_to 'Show Details', ot %></td>
         </tr>
         <% end %>
     </tbody>
@@ -62,5 +87,36 @@
 
 <hr>
 
-<%= link_to 'Edit', rails_admin.edit_path(model_name: 'order_line', id: @order_line.id) %> |
-<%= link_to 'Back', :back %>
+<table class="table table-hover">
+    <tbody>
+   <thead class="thead-light">
+        <tr>
+            <th scope="col" >Task Name</th>
+            <th scope="col">Task Description</th>
+            <th scope="col">Task Start Date</th>
+            <th scope="col">Task Due Date</th>
+            <th scope="col">Task Finish Date</th>
+            <th scope="col">Task Status</th>
+            <th scope="col">Order Line ID</th>
+            <th col span="3">
+        </tr>
+        </thead>
+        <% @order_line.tasks.each do |otasks| %>
+        <tr>
+            <td><%= otasks.task_name %></td>
+            <td><%= otasks.task_description %></td>
+            <td><%= otasks.task_start_date %></td>
+            <td><%= otasks.task_due_date %></td>
+            <td><%= otasks.task_finish_date %></td>
+            <td><%= otasks.task_status.task_status_name %></td>
+            <td><%= otasks.order_line_id %></td>
+            <td><%= link_to 'Show Details', otasks %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<hr>
+
+<%= link_to 'Edit', edit_order_line_path(@order_line), Class:"btn btn-primary" %> 
+<%= link_to 'Back', :back,Class:"btn btn-primary" %>

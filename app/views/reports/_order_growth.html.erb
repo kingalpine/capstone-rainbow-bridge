@@ -1,0 +1,2 @@
+<h1>Order Growth</h1>
+<%= line_chart Order.group_by_day(:order_start_date).count %>

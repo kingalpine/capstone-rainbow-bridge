@@ -1,0 +1,15 @@
+
+<%= @employees = Employee.where employee_type_id: '1' %>
+
+<h1>Bakers</h1>
+<table>
+	<tr>
+		<th>Name<th>
+	</tr>
+	<tr>
+	<%= @employees.each do | employee| %>
+	<th><%= employee.employee_first_name %></th>
+
+	</tr>
+		<% end %>
+</table>

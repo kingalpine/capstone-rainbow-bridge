@@ -1,0 +1,14 @@
+<div class='nested-fields'>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-4">
+      <label for="">Dietary Restriction</label>
+      <%= f.collection_select(:dietary_restriction_id, DietaryRestriction.all, :id, :dietary_restriction_name, {prompt: "Select One...", selected: @order}, {class: "form-control"}) %>
+    </div>
+
+  </div>
+
+  <%= link_to_remove_association "Remove Order Line Restriction", f %>
+
+</div>

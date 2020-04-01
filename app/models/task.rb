@@ -5,7 +5,7 @@ class Task < ApplicationRecord
 
   validates :task_start_date, presence: true
   validates :task_due_date, presence: true
-  validates :task_name, presence: true, format: {with: /\A[a-zA-Z0-9 ]+\z/, message: 'Only Alphanumerical and Numbers Allowed'}
+  validates :task_name, presence: true
 
   accepts_nested_attributes_for :task_assignments
 

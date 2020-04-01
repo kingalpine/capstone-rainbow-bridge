@@ -1,0 +1,45 @@
+<div class='nested-fields'>
+
+  <div class="form-row">
+    <div class="form-group col-md-5">
+      <label for="">Task Name</label>
+      <%= f.text_field :task_name, class: "form-control",placeholder:"Ordername_Taskname" %>
+    </div>
+    <div class="form-group col-md-7">
+      <label for="">Task Description</label>
+      <%= f.text_area :task_description, class: "form-control",placeholder:"Description" %>
+    </div>
+  </div> 
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="">Task Start Date</label>
+      <div>
+        <%= f.datetime_select :task_start_date, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="">Task Due Date</label>
+      <div>
+        <%= f.datetime_select :task_due_date, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="">Task Finish Date</label>
+      <div>
+        <%= f.datetime_select :task_finish_date, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+    
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="">Task Status</label>
+      <%= f.collection_select(:task_status_id, TaskStatus.all, :id, :task_status_name, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+  </div>
+
+  <%= link_to_remove_association "Remove Task", f %>
+
+</div>
+

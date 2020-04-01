@@ -1,53 +1,57 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+    <p id="notice"><%= notice %></p>
 
-<p>
-    <strong>Position:</strong>
-    <%= @tier.position %>
-</p>
+    <p>
+        <strong>Position:</strong>
+        <%= @tier.position %>
+    </p>
 
-<p>
-    <strong>Tier size:</strong>
-    <%= @tier.tier_size %>
-</p>
+    <p>
+        <strong>Tier size:</strong>
+        <%= @tier.tier_size %>
+    </p>
 
-<p>
-    <strong>Tier special notes:</strong>
-    <%= @tier.tier_special_notes %>
-</p>
+    <p>
+        <strong>Tier special notes:</strong>
+        <%= @tier.tier_special_notes %>
+    </p>
 
-<p>
-    <strong>Cake flavor:</strong>
-    <%= @tier.cake_flavor.flavor_name %>
-</p>
+    <p>
+        <strong>Cake flavor:</strong>
+        <%= @tier.cake_flavor.flavor_name %>
+    </p>
 
-<p>
-    <strong>Frosting flavor:</strong>
-    <%= @tier.frosting_flavor.frosting_name %>
-</p>
+    <p>
+        <strong>Frosting flavor:</strong>
+        <%= @tier.frosting_flavor.frosting_name %>
+    </p>
 
-<p>
-    <strong>Shape:</strong>
-    <%= @tier.shape.shape_name %>
-</p>
+    <p>
+        <strong>Shape:</strong>
+        <%= @tier.shape.shape_name %>
+    </p>
 
-<p>
-    <strong>Order line:</strong>
-    <%= @tier.order_line_id %>
-</p>
+    <p>
+        <strong>Order line:</strong>
+        <%= @tier.order_line_id %>
+    </p>
 
-<table>
-    <tbody>
-        <tr>
-            <th>Filling</th>
-        </tr>
-        <hr>
-        <% @tier.tier_fillings.each do |tf| %>
-        <tr>
-            <td><%= tf.filling.filling_name %></td>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
+    <table class="table table-hover">
+        <tbody>
+        <thead class="thead-light">
+            <tr >
+                <th scope="col">Filling</th>
+            </tr>
+            <hr>
+            </thead>
+            <% @tier.tier_fillings.each do |tf| %>
+            <tr>
+                <td><%= tf.filling.filling_name %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
 
-<%= link_to 'Edit', rails_admin.edit_path(model_name: 'tier', id: @tier.id) %> |
-<%= link_to 'Back', :back %>
+    <%= link_to 'Edit', edit_tier_path(@tier), Class:"btn btn-primary" %>
+    <%= link_to 'Back', :back, Class:"btn btn-primary" %>
+</div>

@@ -14,11 +14,11 @@
   <tbody>
     <% @task_assignments.each do |task_assignment| %>
       <tr>
-        <td><%= task_assignment.task_id %></td>
-        <td><%= task_assignment.employee_id %></td>
+        <td><%= task_assignment.task.task_name %></td>
+        <td><%= task_assignment.employee.employee_first_name %> <%= task_assignment.employee.employee_last_name %></td>
         <td><%= link_to 'Show', task_assignment %></td>
         <td><%= link_to 'Edit', edit_task_assignment_path(task_assignment) %></td>
-        <td><%= link_to 'Destroy', task_assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', task_assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

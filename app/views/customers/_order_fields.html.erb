@@ -1,0 +1,98 @@
+<div class='nested-fields'>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-6">
+      <label :order_description>Order Description</label>
+      <%= f.text_area :order_description, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="inputCost4">Order Cost</label>
+      <label class="sr-only" for="inlineFormInputGroup">Order Cost</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">$</div>
+        </div>
+        <%= f.text_field :order_cost, class: "form-control", placeholder:"0.00" %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCust">Delivery or Pick Up</label>
+      <%= f.select :order_delivery, options_for_select([["Delivery",true], ["Pick-Up",false]]), {prompt: "Choose One..."}, {class: "form-control",onchange: "this.dataset.chosen = this.value"} %>
+    </div>
+
+  </div>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-5">
+      <label for="inputAddress">Delivery Street Address</label>
+      <%= f.text_field :delivery_street_address, class: "form-control", placeholder: "1234 Main St." %>
+    </div>
+
+    <div class="form-group com-md-3">
+      <label for="inputAddress2">Delivery City</label>
+      <%= f.text_field :delivery_city, class: "form-control", placeholder: "Dallas" %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputAddress2">Delivery State</label>
+      <%= f.text_field :delivery_state, class: "form-control", placeholder: "TX" %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputZip">Delivery Zip Code</label>
+      <%= f.text_field :delivery_zip_code, class: "form-control", placeholder: "77890" %>
+    </div>
+
+  </div>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-4">
+      <label for="inputAddress">Order Start Date</label>
+      <div>
+        <%= f.datetime_select :order_start_date, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="inputAddress">Delivery Due Date</label>
+      <div>
+        <%= f.datetime_select :order_due_date, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="inputAddress">Delivery Finish Date</label>
+      <div>
+        <%= f.datetime_select :order_due_date, class: "form-control" %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-row">
+
+    <!-- <div class="form-group col-md-4">
+      <label for="inputCust">Customer</label>
+      <%= f.collection_select(:customer_id, Customer.all, :id, :customer_first_name,{prompt: "Select One..."}, {class: "form-control"}) %>
+    </div> -->
+
+    <div class="form-group col-md-4">
+      <label for="inputOrdType">Order Type</label>
+      <%= f.collection_select(:order_type_id, OrderType.all, :id, :order_description, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="inputOrderStat">Order Status</label>
+      <%= f.collection_select(:order_status_id, OrderStatus.all, :id, :order_status_name, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+
+  </div>
+  
+  <%= link_to_remove_association "Remove Order", f %>
+
+</div>

@@ -13,14 +13,31 @@
 </head>
 
 <body>
-
+<div class="img">
+<%=image_tag("logo/logo_transparent (2).png", alt: "Icednfrostedlogo", :size => "200x100", :align => "d-inline-block align-top") %>
+</div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <ul class="nav nav-pills nav-fill">
             <li class="nav-item">
                 <%= link_to 'Home', main_app.root_path, :class => "nav-link" %>
             </li>
             <li class="nav-item">
-                <%= link_to 'Customers', rails_admin.index_path('customer'), :class => "nav-link" %>
+                <%= link_to 'Customers', main_app.customers_path, :class => "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Orders', main_app.orders_path, :class => "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Order Content', main_app.order_lines_path, :class => "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Tiers', main_app.tiers_path, :class => "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Tasks', main_app.tasks_path, :class => "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Employees', main_app.employees_path, :class => "nav-link" %>
             </li>
             <li class="nav-item">
                 <%= link_to 'Reports', main_app.reports_path, :class => "nav-link" %>
@@ -30,7 +47,7 @@
             </li>
         </ul>
     </nav>
-
+   
     <%= yield %>
 
 </body>

@@ -5,8 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Filling name</th>
-      <th>Filling description</th>
+      <th>Filling Name</th>
+      <th>Description</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,7 +18,7 @@
         <td><%= filling.filling_description %></td>
         <td><%= link_to 'Show', filling %></td>
         <td><%= link_to 'Edit', edit_filling_path(filling) %></td>
-        <td><%= link_to 'Destroy', filling, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', filling, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

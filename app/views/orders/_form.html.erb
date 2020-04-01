@@ -11,72 +11,143 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :order_description %>
-    <%= form.text_field :order_description %>
+  <div class="form-row">
+
+    <div class="form-group col-md-6">
+      <label :order_description>Order Description</label>
+      <%= form.text_area :order_description, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="inputCost4">Order Cost</label>
+      <label class="sr-only" for="inlineFormInputGroup">Order Cost</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">$</div>
+        </div>
+        <%= form.text_field :order_cost, class: "form-control", placeholder:"0.00" %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCust">Delivery or Pick Up</label>
+      <%= form.select :order_delivery, options_for_select([["Delivery",true], ["Pick-Up",false]]), {prompt: "Choose One..."}, {class: "form-control",onchange: "this.dataset.chosen = this.value"} %>
+    </div>
+
   </div>
 
-  <div class="field">
-    <%= form.label :order_cost %>
-    <%= form.text_field :order_cost %>
+  <div class="form-row">
+
+    <div class="form-group col-md-5">
+      <label for="inputAddress">Delivery Street Address</label>
+      <%= form.text_field :delivery_street_address, class: "form-control", placeholder: "1234 Main St." %>
+    </div>
+
+    <div class="form-group com-md-3">
+      <label for="inputAddress2">Delivery City</label>
+      <%= form.text_field :delivery_city, class: "form-control", placeholder: "Dallas" %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputAddress2">Delivery State</label>
+      <%= form.text_field :delivery_state, class: "form-control", placeholder: "TX" %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputZip">Delivery Zip Code</label>
+      <%= form.text_field :delivery_zip_code, class: "form-control", placeholder: "77890" %>
+    </div>
+
   </div>
 
-  <div class="field">
-    <%= form.label :order_start_date %>
-    <%= form.datetime_select :order_start_date %>
+  <div class="form-row">
+
+    <div class="form-group col-md-4">
+      <label for="inputAddress">Order Start Date</label>
+      <div>
+        <%= form.datetime_select :order_start_date, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="inputAddress">Delivery Due Date</label>
+      <div>
+        <%= form.datetime_select :order_due_date, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="inputAddress">Delivery Finish Date</label>
+      <div>
+        <%= form.datetime_select :order_due_date, class: "form-control" %>
+      </div>
+    </div>
+
   </div>
 
-  <div class="field">
-    <%= form.label :order_due_date %>
-    <%= form.datetime_select :order_due_date %>
+  <div class="form-row">
+
+    <div class="form-group col-md-4">
+      <label for="inputCust">Customer</label>
+      <%= form.collection_select(:customer_id, Customer.all, :id, :full_name,{prompt: "Select One...", selected: @customer}, {class: "form-control"}) %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="inputOrdType">Order Type</label>
+      <%= form.collection_select(:order_type_id, OrderType.all, :id, :order_description, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="inputOrderStat">Order Status</label>
+      <%= form.collection_select(:order_status_id, OrderStatus.all, :id, :order_status_name, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+
   </div>
 
-  <div class="field">
-    <%= form.label :order_date_finish %>
-    <%= form.datetime_select :order_date_finish %>
-  </div>
+  <!-- <div class="dropdown">
+      <%= form.label :order_delivery %>
+      <%= form.check_box :order_delivery %>
 
-  <div class="field">
-    <%= form.label :order_delivery %>
-    <%= form.check_box :order_delivery %>
-  </div>
+      <div class="delivery">
+          <%= form.label :delivery_street_address %>
+          <%= form.text_field :delivery_street_address %>
 
-  <div class="field">
-    <%= form.label :delivery_street_address %>
-    <%= form.text_field :delivery_street_address %>
-  </div>
+          <%= form.label :delivery_city %>
+          <%= form.text_field :delivery_city %>
 
-  <div class="field">
-    <%= form.label :delivery_city %>
-    <%= form.text_field :delivery_city %>
-  </div>
+          <%= form.label :delivery_state %>
+          <%= form.text_field :delivery_state %>
 
-  <div class="field">
-    <%= form.label :delivery_state %>
-    <%= form.text_field :delivery_state %>
-  </div>
+          <%= form.label :delivery_zip_code %>
+          <%= form.text_field :delivery_zip_code %>
+        </div>
+      </div>
+  </div> -->
 
-  <div class="field">
-    <%= form.label :delivery_zip_code %>
-    <%= form.text_field :delivery_zip_code %>
+  <h3>Order Contents</h3>
+  <div id='order_lines'>
+    <%= form.fields_for :order_lines do |order_line| %>
+      <%= render 'order_line_fields', :f => order_line %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'Add an Order Line', form, :order_lines %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :customer_id %>
-    <%= form.text_field :customer_id %>
+  <hr>
+  <h3>Rental Items</h3>
+  <div id='rental_lines'>
+    <%= form.fields_for :rental_lines do |rental_line| %>
+      <%= render 'rental_line_fields', :f => rental_line %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'Add a Rental Line', form, :rental_lines %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :order_type_id %>
-    <%= form.text_field :order_type_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :order_status_id %>
-    <%= form.text_field :order_status_id %>
-  </div>
+  <hr>
 
   <div class="actions">
-    <%= form.submit %>
+    <%# <%= form.submit , class: "btn btn-primary"%>
+    <button type="submit" class="btn btn-primary">Create Order</button>
   </div>
+
 <% end %>

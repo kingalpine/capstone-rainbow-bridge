@@ -1,0 +1,132 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-6">
+      <label :order_description>Order Description</label>
+      <%= form.text_area :order_description, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="inputCost4">Order Cost</label>
+      <label class="sr-only" for="inlineFormInputGroup">Order Cost</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">$</div>
+        </div>
+        <%= form.text_field :order_cost, class: "form-control", placeholder:"0.00" %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputCust">Delivery or Pick Up</label>
+      <%= form.select :order_delivery, options_for_select([["Delivery",true], ["Pick-Up",false]]), {prompt: "Choose One..."}, {class: "form-control",onchange: "this.dataset.chosen = this.value"} %>
+    </div>
+
+  </div>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-5">
+      <label for="inputAddress">Delivery Street Address</label>
+      <%= form.text_field :delivery_street_address, class: "form-control", placeholder: "1234 Main St." %>
+    </div>
+
+    <div class="form-group com-md-3">
+      <label for="inputAddress2">Delivery City</label>
+      <%= form.text_field :delivery_city, class: "form-control", placeholder: "Dallas" %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputAddress2">Delivery State</label>
+      <%= form.text_field :delivery_state, class: "form-control", placeholder: "TX" %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputZip">Delivery Zip Code</label>
+      <%= form.text_field :delivery_zip_code, class: "form-control", placeholder: "77890" %>
+    </div>
+
+  </div>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-4">
+      <label for="inputAddress">Order Start Date</label>
+      <div>
+        <%= form.datetime_select :order_start_date, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="inputAddress">Delivery Due Date</label>
+      <div>
+        <%= form.datetime_select :order_due_date, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="inputAddress">Delivery Finish Date</label>
+      <div>
+        <%= form.datetime_select :order_due_date, class: "form-control" %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-4">
+      <label for="inputCust">Customer</label>
+      <%# <%= form.collection_select(:customer_id, Customer.all, :id, :full_name,{prompt: "Select One...", selected: @customer}, {class: "form-control"}) %> %>
+      <%= form.collection_select(:customer_id, Customer.all, :id, :full_name,{}, {class: "form-control"}) %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="inputOrdType">Order Type</label>
+      <%= form.collection_select(:order_type_id, OrderType.all, :id, :order_description, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="inputOrderStat">Order Status</label>
+      <%= form.collection_select(:order_status_id, OrderStatus.all, :id, :order_status_name, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+
+  </div>
+
+  <!-- <div class="dropdown">
+      <%= form.label :order_delivery %>
+      <%= form.check_box :order_delivery %>
+
+      <div class="delivery">
+          <%= form.label :delivery_street_address %>
+          <%= form.text_field :delivery_street_address %>
+
+          <%= form.label :delivery_city %>
+          <%= form.text_field :delivery_city %>
+
+          <%= form.label :delivery_state %>
+          <%= form.text_field :delivery_state %>
+
+          <%= form.label :delivery_zip_code %>
+          <%= form.text_field :delivery_zip_code %>
+        </div>
+      </div>
+  </div> -->
+
+  <div class="actions">
+    <button type="submit" class="btn btn-primary">Update Order</button>
+  </div>
+
+<% end %>

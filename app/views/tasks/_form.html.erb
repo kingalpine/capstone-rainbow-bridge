@@ -11,42 +11,58 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :task_name %>
-    <%= form.text_field :task_name %>
-  </div>
+  <div class="form-row">
+    <div class="form-group col-md-5">
+      <label for="">Task Name</label>
+      <%= form.text_field :task_name, class: "form-control",placeholder:"Ordername_Taskname" %>
+    </div>
+    <div class="form-group col-md-7">
+      <label for="">Task Description</label>
+      <%= form.text_area :task_description, class: "form-control",placeholder:"Description" %>
+    </div>
+  </div> 
 
-  <div class="field">
-    <%= form.label :task_description %>
-    <%= form.text_field :task_description %>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="">Task Start Date</label>
+      <div>
+        <%= form.datetime_select :task_start_date, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="">Task Due Date</label>
+      <div>
+        <%= form.datetime_select :task_due_date, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="">Task Finish Date</label>
+      <div>
+        <%= form.datetime_select :task_finish_date, class: "form-control" %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :task_start_date %>
-    <%= form.datetime_select :task_start_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :task_due_date %>
-    <%= form.datetime_select :task_due_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :task_finish_date %>
-    <%= form.datetime_select :task_finish_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :task_status_id %>
-    <%= form.text_field :task_status_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :order_line_id %>
-    <%= form.text_field :order_line_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="">Task Status</label>
+      <%= form.collection_select(:task_status_id, TaskStatus.all, :id, :task_status_name, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="">Order Line</label>
+      <%= form.collection_select(:order_line_id, OrderLine.all, :id, :order_line_description, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+    <h3>Task Assignment</h3>
+    <div id='task_assignments'>
+      <%= form.fields_for :task_assignments do |task_assignment| %>
+        <%= render 'task_assignment_fields', :f => task_assignment %>
+      <% end %>
+      <br>
+      <div class='links'>
+        <%= link_to_add_association 'Add a task assignment', form, :task_assignments %>
+      </div>
+    </div>
+    <hr>
+</div>
+<button type="submit" class="btn btn-primary">Create Task</button>
 <% end %>

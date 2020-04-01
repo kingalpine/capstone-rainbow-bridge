@@ -1,6 +1,8 @@
-<h1>Editing Tier</h1>
+<div class="container">
+    <h1>Editing Tier</h1>
 
-<%= render 'form', tier: @tier %>
+    <%= render 'form2', tier: @tier %>
 
-<%= link_to 'Show', @tier %> |
-<%= link_to 'Back', tiers_path %>
+    <%= link_to 'Show', @tier, Class:"btn btn-primary"%> 
+    <%= link_to 'Back', tiers_path, Class:"btn btn-primary" %>
+</div>

@@ -1,62 +1,79 @@
-<%= form_with(model: customer, local: true) do |form| %>
+<%= form_for customer, :html => {:class => "form-horizontal center"} do |form| %>
   <% if customer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
 
-      <ul>
-        <% customer.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% customer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <%= form.label "First Name" %>
+        <%= form.text_field :customer_first_name, class: "form-control" %>
+      </div>
+
+    <div class="form-group col-md-6">
+      <%= form.label "Last Name" %>
+      <%= form.text_field :customer_last_name, class: "form-control" %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :customer_first_name %>
-    <%= form.text_field :customer_first_name %>
+    <div class="form-group col-md-2">
+      <%= form.label "Phone" %>
+      <%= form.text_field :customer_phone, class: "form-control", placeholder: "XXX-XXX-XXXX" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :customer_last_name %>
-    <%= form.text_field :customer_last_name %>
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      <%= form.label "Email" %>
+      <%= form.text_field :customer_email, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label "Status" %>
+      <%= form.collection_select(:customer_status_id, CustomerStatus.all, :id, :customer_status_name, {prompt: "Select One..."}, {class: "form-control"}) %> 
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :customer_email %>
-    <%= form.text_field :customer_email %>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= form.label "Street Address" %>
+      <%= form.text_field :customer_street_address, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :customer_phone %>
-    <%= form.text_field :customer_phone %>
-  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= form.label "City" %>
+      <%= form.text_field :customer_city, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :customer_street_address %>
-    <%= form.text_field :customer_street_address %>
-  </div>
+    <div class="form-group col-md-3">
+      <%= form.label "State" %>
+      <%= form.text_field :customer_state, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :customer_city %>
-    <%= form.text_field :customer_city %>
+    <div class="form-group col-md-3">
+      <%= form.label "Zip Code" %>
+      <%= form.text_field :customer_zip_code, class: "form-control" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :customer_state %>
-    <%= form.text_field :customer_state %>
-  </div>
-
-  <div class="field">
-    <%= form.label :customer_zip_code %>
-    <%= form.text_field :customer_zip_code %>
-  </div>
-
-  <div class="field">
-    <%= form.label :customer_status_id %>
-    <%= form.text_field :customer_status_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  
+  <h3>Orders</h3>
+    <div id='orders'>
+      <%= form.fields_for :orders do |order| %>
+        <%= render 'order_fields', :f => order %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'Add an Order', form, :orders %>
+      </div>
+    </div>
+  <hr>
+  
+  <button type="submit" class="btn btn-primary">Create Customer</button>
 <% end %>
+

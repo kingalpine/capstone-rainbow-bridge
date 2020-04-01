@@ -11,37 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :employee_first_name %>
-    <%= form.text_field :employee_first_name %>
-  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="">First Name</label>
+      <%= form.text_field :employee_first_name, class: "form-control",placeholder:"Jane" %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="">Last Name</label>
+      <%= form.text_field :employee_last_name, class: "form-control",placeholder:"Doe" %>
+    </div> 
+    <div class="form-group col-md-2">
+      <label for="inputPhone">Phone Number</label>
+      <%= form.text_field :employee_phone, class: "form-control", placeholder: "XXX-XXX-XXXX" %>
+    </div>
+  </div> 
 
-  <div class="field">
-    <%= form.label :employee_last_name %>
-    <%= form.text_field :employee_last_name %>
-  </div>
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      <label for="">Email</label>
+      <%= form.text_field :employee_email, class: "form-control",placeholder:"example@gmail.com" %>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="">Employee Status</label>
+      <%= form.collection_select(:employee_status_id, EmployeeStatus.all, :id, :employee_status_name, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="">Employee Type</label>
+      <%= form.collection_select(:employee_type_id, EmployeeType.all, :id, :employee_type_description, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
 
-  <div class="field">
-    <%= form.label :employee_email %>
-    <%= form.text_field :employee_email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :employee_phone %>
-    <%= form.text_field :employee_phone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :employee_status_id %>
-    <%= form.text_field :employee_status_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :employee_type_id %>
-    <%= form.text_field :employee_type_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  </div> 
+    </form>
+    <button type="submit" class="btn btn-primary">Create Employee</button>
+    <br>
 <% end %>

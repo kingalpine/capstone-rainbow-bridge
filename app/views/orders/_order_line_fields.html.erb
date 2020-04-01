@@ -1,0 +1,38 @@
+<div class='nested-fields'>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="">Order Line Description</label>
+      <%= f.text_area :order_line_description, class: "form-control",placeholder:"Description" %>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label for="">Special Order Notes</label>
+        <%= f.text_area :special_order_notes, class: "form-control",placeholder:"Notes" %>
+     </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="">Order Line Start Date</label>
+      <%= f.datetime_select :order_line_start_date, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="">Order Line Finish Date</label>
+      <%= f.datetime_select :order_line_finish_date, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="">Product</label>
+      <%= f.collection_select(:product_id, Product.all, :id, :product_name, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="">Order Line Status</label>
+      <%= f.collection_select(:order_line_status_id, OrderLineStatus.all, :id, :order_line_status_name, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+  </div>
+
+  <%= link_to_remove_association "Remove Order Line", f %>
+
+</div>

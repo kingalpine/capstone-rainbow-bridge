@@ -10,48 +10,80 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="">Order Line Description</label>
+      <%= form.text_area :order_line_description, class: "form-control",placeholder:"Description" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :order_line_description %>
-    <%= form.text_field :order_line_description %>
+    <div class="form-group col-md-6">
+        <label for="">Special Order Notes</label>
+        <%= form.text_area :special_order_notes, class: "form-control",placeholder:"Notes" %>
+     </div>
   </div>
 
-  <div class="field">
-    <%= form.label :order_line_start_date %>
-    <%= form.datetime_select :order_line_start_date %>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="">Order Line Start Date</label>
+      <%= form.datetime_select :order_line_start_date, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="">Order Line Finish Date</label>
+      <%= form.datetime_select :order_line_finish_date, class: "form-control" %>
+    </div>
   </div>
+    
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="">Product</label>
+      <%= form.collection_select(:product_id, Product.all, :id, :product_name, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="">Order Line Status</label>
+      <%= form.collection_select(:order_line_status_id, OrderLineStatus.all, :id, :order_line_status_name, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="">Order</label>
+      <%= form.collection_select(:order_id, Order.all, :id, :order_description, {prompt: "Select One...", selected: @order}, {class: "form-control"}) %>
+    </div>
+  </div>
+    
+  <h3>Dietary Restrictions</h3>
+  <div id='order_line_restrictions'>
+      <%= form.fields_for :order_line_restrictions do |order_line_restriction| %>
+      <%= render 'order_line_restriction_fields', :f => order_line_restriction %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'Add a Dietary Restriction', form, :order_line_restrictions %>
+    </div>
+  </div>
+  <hr>
 
-  <div class="field">
-    <%= form.label :order_line_finish_date %>
-    <%= form.datetime_select :order_line_finish_date %>
+  <h3>Tiers</h3>
+  <div id='tiers'>
+    <%= form.fields_for :tiers do |tier| %>
+      <%= render 'tiers', :f => tier %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'Add a Tier', form, :tiers %>
+    </div>
   </div>
+  <hr>
 
-  <div class="field">
-    <%= form.label :special_order_notes %>
-    <%= form.text_field :special_order_notes %>
+  <h3>Tasks</h3>
+  <div id='Tasks'>
+    <%= form.fields_for :tasks do |task| %>
+      <%= render 'task_fields', :f => task %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'Add a Task', form, :tasks %>
+    </div>
   </div>
+<hr>
+  </div>
+  <hr>
 
-  <div class="field">
-    <%= form.label :product_id %>
-    <%= form.text_field :product_id %>
-  </div>
+  <button type="submit" class="btn btn-primary">Create Order Content</button>
 
-  <div class="field">
-    <%= form.label :order_line_status_id %>
-    <%= form.text_field :order_line_status_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :order_id %>
-    <%= form.text_field :order_id %>
-  </div>
-
-  <div class="field">
-  <%= form.label :image %>
-  <%= form.file_field :image %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

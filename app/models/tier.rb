@@ -5,7 +5,7 @@ class Tier < ApplicationRecord
   belongs_to :order_line
   has_many :tier_fillings
 
-  validates :position, presence: true, numericality: {only_integer: true}
+  # validates :position, numericality: {only_integer: true} # No validation because it's automated.
   validates :tier_size, presence: true, format: {with: /\A[a-zA-Z0-9 ]+\z/, message: 'Only Alphanumerical and Numbers Allowed'}
 
 
@@ -52,6 +52,8 @@ class Tier < ApplicationRecord
     @setPosition = @maxPosition + 1
     puts(@setPosition)
     self.position = @setPosition
+
+    # if OrderLine.exists?(id: self.order_line_id)
   end
 
   has_paper_trail

@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 #  ruby '2.6.3'
 ruby '2.5.5'
 
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # Use sqlite3 as the database for Active Record
@@ -30,10 +31,16 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+ gem "cocoon"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+gem 'pagy'
 
+
+#Chartkick for making reports - Daniel 3/27
+gem "chartkick"
+#Groupdate for grouping by dates - Daniel 3/27
+gem 'groupdate'
 # Admin Dashboard for data management
 gem 'rails_admin'
 gem 'rails_admin_history_rollback'

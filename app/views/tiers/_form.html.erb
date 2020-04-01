@@ -11,42 +11,50 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :position %>
-    <%= form.number_field :position %>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <%= form.label :tier_size %>
+      <%= form.text_field :tier_size, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= form.label :tier_special_notes %>
+      <%= form.text_area :tier_special_notes, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= form.label :cake_flavor_id %>
+      <%= form.collection_select(:cake_flavor_id, CakeFlavor.all, :id, :flavor_name, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :tier_size %>
-    <%= form.number_field :tier_size %>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <%= form.label :frosting_flavor_id %>
+      <%= form.collection_select(:frosting_flavor_id, FrostingFlavor.all, :id, :frosting_name, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :shape_id %>
+      <%= form.collection_select(:shape_id, Shape.all, :id, :shape_name, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :order_line_id %>
+      <%= form.collection_select(:order_line_id, OrderLine.all, :id, :order_line_description, {prompt: "Select One..."}, {class: "form-control"}) %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :tier_special_notes %>
-    <%= form.text_field :tier_special_notes %>
-  </div>
+  <button type="submit" class="btn btn-primary">Create Tier</button>
 
-  <div class="field">
-    <%= form.label :cake_flavor_id %>
-    <%= form.text_field :cake_flavor_id %>
+  <h3>Tier Contents</h3>
+  <div id='tier_fillings'>
+    <%= form.fields_for :tier_fillings do |tier_filling| %>
+      <%= render 'tier_filling_fields', :f => tier_filling %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'Add a Tier Filling', form, :tier_fillings %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :frosting_flavor_id %>
-    <%= form.text_field :frosting_flavor_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :shape_id %>
-    <%= form.text_field :shape_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :order_line_id %>
-    <%= form.text_field :order_line_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <hr>
 <% end %>

@@ -15,6 +15,7 @@ class OrderLinesController < ApplicationController
   # GET /order_lines/new
   def new
     @order_line = OrderLine.new
+    @order = params[:order_id]
   end
 
   # GET /order_lines/1/edit
@@ -69,6 +70,6 @@ class OrderLinesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_line_params
-      params.require(:order_line).permit(:order_line_description, :order_line_start_date, :order_line_finish_date, :special_order_notes, :product_id, :order_line_status_id, :image)
+      params.require(:order_line).permit(:order_line_description, :order_line_start_date, :order_line_finish_date, :special_order_notes, :product_id, :order_line_status_id, order_line_restrictions_attributes: [:order_line_id, :dietary_restriction_id, :_destroy], tasks_attributes: [:task_name, :task_description, :task_start_date, :task_due_date, :task_finish_date, :task_status_id, :_destroy], tiers_attributes: [:position, :tier_size, :tier_special_notes, :cake_flavor_id, :frosting_flavor_id, :shape_id, :_destroy])
     end
 end

@@ -1,0 +1,68 @@
+<%= form_for customer, :html => {:class => "form-horizontal center"} do |form| %>
+  <% if customer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+        <% customer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <%= form.label "First Name" %>
+      <%= form.text_field :customer_first_name, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= form.label "Last Name" %>
+      <%= form.text_field :customer_last_name, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <%= form.label "Phone" %>
+      <%= form.text_field :customer_phone, class: "form-control", placeholder: "XXX-XXX-XXXX" %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      <%= form.label "Email" %>
+      <%= form.text_field :customer_email, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label "Status" %>
+      <%= form.collection_select(:customer_status_id, CustomerStatus.all, :id, :customer_status_name, {prompt: "Select One..."}, {class: "form-control"}) %> 
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= form.label "Street Address" %>
+      <%= form.text_field :customer_street_address, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= form.label "City" %>
+      <%= form.text_field :customer_city, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= form.label "State" %>
+      <%= form.text_field :customer_state, class: "form-control" %>
+    </div>
+   </form>
+   </div>
+    <button type="submit" class="btn btn-primary">Update Customer</button>
+
+  <% end %>
+
+
+
+<%#Customer.find(@order.customer_id).order_date_finished %>

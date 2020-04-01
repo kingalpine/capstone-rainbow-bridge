@@ -5,8 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Order line</th>
-      <th>Dietary restriction</th>
+      <th>Order Line</th>
+      <th>Dietary Restriction</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,10 +15,10 @@
     <% @order_line_restrictions.each do |order_line_restriction| %>
       <tr>
         <td><%= order_line_restriction.order_line_id %></td>
-        <td><%= order_line_restriction.dietary_restriction_id %></td>
+        <td><%= order_line_restriction.dietary_restriction.dietary_restriction_name %></td>
         <td><%= link_to 'Show', order_line_restriction %></td>
         <td><%= link_to 'Edit', edit_order_line_restriction_path(order_line_restriction) %></td>
-        <td><%= link_to 'Destroy', order_line_restriction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', order_line_restriction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

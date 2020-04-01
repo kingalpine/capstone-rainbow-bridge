@@ -1,0 +1,42 @@
+<div class="text-center">
+    <h1>Top 10 Customers</h1>
+</div>
+
+<% @topCustomers = Order.group(:customer_id).order('count_id desc').count('id').first(10) %>
+
+
+<% @topCustomerNames = [] %>
+
+<% @topCustomers.each do |tc| %>
+    <% temparr = []%>
+    <% temparr.push(Customer.where(:id => tc[0]).take.full_name) %>
+    <% temparr.push(tc[1]) %>
+    <% @topCustomerNames.push(temparr) %>
+<% end %>
+
+<br>
+
+<div class="container" >
+    <%= column_chart @topCustomerNames, id: "topCustomerNames", height: "500px", scales: { xAxes: {ticks: { fontSize: 20 } } } %>
+   
+</div>
+
+<br>
+
+<table class="table table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th>Customers</th>
+            <th>Number of Orders</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @topCustomerNames.each do |tc| %>
+        <tr>
+            <td><%= tc[0] %></td>
+            <td><%= tc[1] %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

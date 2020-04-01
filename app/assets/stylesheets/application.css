@@ -13,16 +13,36 @@
  *= require_tree .
  *= require_self
  */
- 
- .navbar {
-    position: relative;
-    min-height: 50px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
+
+ table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+bottom: .5em;
 }
 
+.nav {
+    width: 100%;
+    background-color: #F5EBEE;
+    overflow: auto;
+  }
+  
+.navbar a:hover {
+    color:palevioletred;
+  }
+  .img{
+      align-items: center;  
+    }
 a:link {
-    color: black;
-    background-color: transparent;
+    color:black;
+    scrollbar-highlight-color: blue;
+    background-color:transparent;
 }
+
+
