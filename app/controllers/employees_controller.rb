@@ -1,10 +1,11 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
+    @pagy,@employees = pagy(Employee.all.order(sort_column + ' ' + sort_direction))
   end
 
   # GET /employees/1
@@ -70,5 +71,12 @@ class EmployeesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def employee_params
       params.require(:employee).permit(:employee_first_name, :employee_last_name, :employee_email, :employee_phone, :employee_status_id, :employee_type_id)
+    end
+    def sort_column
+      Employee.column_names.include?(params[:sort]) ? params[:sort] : "employee_first_name"
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
     end
 end

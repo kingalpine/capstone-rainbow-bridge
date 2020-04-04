@@ -1,10 +1,11 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
   require 'date'
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @pagy,@orders = pagy(Order.all.order(sort_column + ' ' + sort_direction))
   end
 
   # GET /orders/1
@@ -71,5 +72,12 @@ class OrdersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def order_params
       params.require(:order).permit(:order_description, :order_cost, :order_start_date, :order_due_date, :order_date_finish, :order_delivery, :delivery_street_address, :delivery_city, :delivery_state, :delivery_zip_code, :customer_id, :order_type_id, :order_status_id, order_lines_attributes: [:order_line_description, :order_line_start_date, :order_line_finish_date, :special_order_notes, :product_id, :order_line_status_id, :_destroy], rental_lines_attributes: [:rental_item_id, :order_id, :_destroy])
+    end
+    def sort_column
+      Order.column_names.include?(params[:sort]) ? params[:sort] : "order_description"
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
     end
 end
