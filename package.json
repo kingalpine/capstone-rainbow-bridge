@@ -10,7 +10,7 @@
     "chart.js": "^2.9.3",
     "chartkick": "^3.2.0",
     "cocoon": "github:nathanvda/cocoon#c24ba53",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jquery.js": "^0.0.2-security",
     "popper.js": "^1.16.1",
     "turbolinks": "^5.2.0",
